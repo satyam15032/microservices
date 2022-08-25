@@ -32,14 +32,14 @@ public class UserController {
         return userRepository.save(user);
     }
     @DeleteMapping("/user/{id}")
-    public ResponseEntity<?> deleteBook(@PathVariable(value = "id") Long userId) {
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User", "id", userId));
 
         userRepository.delete(user);
         return ResponseEntity.ok().build();
     }
     @PutMapping("/user/{id}")
-    public User updateBook(@PathVariable(value = "id") Long userId,
+    public User updateUser(@PathVariable(value = "id") Long userId,
                            @RequestBody User userDetails) {
 
         userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User", "id", userId));
